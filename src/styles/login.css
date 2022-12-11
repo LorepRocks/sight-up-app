@@ -1,0 +1,17 @@
+.loginContainer{
+    display: flex;
+    padding: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+.loginContainer #svgLogo{
+    width: 48vw;
+}
+
+.buttonsGroup{
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
