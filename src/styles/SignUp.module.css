@@ -1,0 +1,39 @@
+.mainSection{
+    display: flex;
+    padding: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.mainSection :global(#splash){
+    width: 40vw;
+}
+
+.formSection{
+    width: 48vw;
+    background: rgb(192, 179, 225, 0.2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 95vh;
+    padding: 3rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form{
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+}
+
+

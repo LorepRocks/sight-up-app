@@ -1,8 +1,8 @@
 import { ReactSVG } from "react-svg";
-import "../styles/logo.css";
+import styles from "../styles/Logo.module.css";
 const Logo = () => {
   return (
-    <div className="logoContainer">
+    <div className={styles.logoContainer}>
       <ReactSVG src="/sightup-logo3.svg"></ReactSVG>
     </div>
   );

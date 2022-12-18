@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'QuicksandBold';
+  src: local('QuicksandBold'), url("./fonts/Quicksand-Bold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'QuicksandSemiBold';
+  src: local('QuicksandSemiBold'), url("./fonts/Quicksand-SemiBold.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'QuicksandRegular';
+  src: local('QuicksandRegular'), url("./fonts/Quicksand-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'QuicksandLight';
+  src: local('QuicksandLight'), url("./fonts/Quicksand-Light.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'PacificoRegular';
+  src: local('PacificoRegular'), url("./fonts/Pacifico-Regular.ttf") format('truetype');
+}

@@ -1,25 +1,23 @@
-import { createTheme, ThemeProvider } from "@mui/material";
-import Login from "./components/Login";
-import Montserrat from "../src/fonts/Montserrat.ttf";
-import "./App.css";
+import { ThemeProvider } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#AB86CC",
-    },
-    secondary: {
-      main: "#EF9762",
-      dark: "#B38A71",
-    },
-  },
-});
+import Login from "./components/Login";
+import theme from "./theme";
+import Home from "./components/Home";
+import SignUp from "./components/SignUp";
+import ForgotPassword from "./components/ForgotPassword";
+import "./App.css";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Login />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
       </div>
     </ThemeProvider>
   );

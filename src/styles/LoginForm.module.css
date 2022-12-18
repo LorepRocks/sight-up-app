@@ -1,0 +1,29 @@
+.loginActions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textBtn{
+    padding: 0;
+    margin: 0 0 0 .2rem;
+    color:#EF9762;
+    text-decoration: none;
+}
+
+.textBtn:hover{
+    text-decoration: underline;
+}
+
+.forgotBtn {
+    margin: 0;
+    padding: 0;
+    color:#455A64;
+    font-family: QuicksandLight, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.forgotBtn:hover{
+    text-decoration: underline;
+}
