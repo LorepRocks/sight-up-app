@@ -3,29 +3,32 @@ import { Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 
 import Logo from "./Logo";
-import { constants } from "../lib/constants";
+import { femaleAvatarDefaultURL, maleAvatarDefaultURL } from "../lib/constants";
 import styles from "../styles/SignUp.module.css";
 import { useState } from "react";
 import GoogleBtn from "./buttons/GoogleBtn";
 import UserAvatar from "./Avatar";
 import SignUpForm from "./forms/SignUpForm";
+import SelectAvatar from "./dialogs/SelectAvatar";
 
 const SignUp = () => {
-  const [defaultAvatar, setDefaultAvatar] = useState(
-    constants.femaleAvatarDefaultURL
-  );
+  const [defaultAvatar, setDefaultAvatar] = useState(femaleAvatarDefaultURL);
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleGenderChange = (e) => {
     const gender = e.target.value;
     const avatarURL =
-      gender === "male"
-        ? constants.maleAvatarDefaultURL
-        : constants.femaleAvatarDefaultURL;
+      gender === "male" ? maleAvatarDefaultURL : femaleAvatarDefaultURL;
     setDefaultAvatar(avatarURL);
   };
   const handleGoogleLogin = () => {};
   const handleBadgeClick = () => {
     console.log("badge clicked");
+    setOpen(true);
   };
 
   return (
@@ -43,6 +46,7 @@ const SignUp = () => {
               handleBadgeClick={handleBadgeClick}
               defaultAvatar={defaultAvatar}
             />
+            <SelectAvatar open={open} handleClose={handleClose} />
             <Box className={styles.form}>
               <SignUpForm handleGenderChange={handleGenderChange} />
               <Button variant="contained" color="secondary" sx={{ height: 50 }}>
