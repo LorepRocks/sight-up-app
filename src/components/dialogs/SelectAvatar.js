@@ -1,11 +1,12 @@
-import { Modal, Typography, Box, Avatar } from "@mui/material";
+import { Modal, Box, Avatar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ReactSVG } from "react-svg";
 
 import styles from "../../styles/Dialog.module.css";
 import { defaultAvatars } from "../../lib/constants";
 
-const SelectAvatar = ({ open, handleClose }) => {
+const SelectAvatar = ({ open, handleClose, setDefaultAvatar, setImage}) => {
+  
   const style = {
     position: "absolute",
     top: "50%",
@@ -17,6 +18,11 @@ const SelectAvatar = ({ open, handleClose }) => {
     boxShadow: 18,
     p: 4,
   };
+
+  const handleAvatarChange = (avatar) => {
+    setImage('');
+    setDefaultAvatar(avatar.url);
+  }
 
   return (
     <Modal
@@ -38,6 +44,7 @@ const SelectAvatar = ({ open, handleClose }) => {
               className={styles.avatar}
               key={avatar.id}
               sx={{ width: 50, height: 50 }}
+              onClick = {() => handleAvatarChange(avatar)}
             >
               <ReactSVG src={avatar.url} />
             </Avatar>
