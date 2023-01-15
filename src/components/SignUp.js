@@ -10,13 +10,22 @@ import GoogleBtn from "./buttons/GoogleBtn";
 import UserAvatar from "./Avatar";
 import SignUpForm from "./forms/SignUpForm";
 import SelectAvatar from "./dialogs/SelectAvatar";
+import SelectImage from "./dialogs/SelectImage";
 
 const SignUp = () => {
   const [defaultAvatar, setDefaultAvatar] = useState(femaleAvatarDefaultURL);
+  const [image, setImage] = useState('');
 
   const [open, setOpen] = useState(false);
+  const [openAvatar, setOpenAvatar] = useState(false)
+
+
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCloseAvatar = () => {
+    setOpenAvatar(false);
   };
 
   const handleGenderChange = (e) => {
@@ -46,8 +55,15 @@ const SignUp = () => {
             <UserAvatar
               handleBadgeClick={handleBadgeClick}
               defaultAvatar={defaultAvatar}
+              image={image || false}
             />
-            <SelectAvatar open={open} handleClose={handleClose} />
+            <SelectImage open={open} handleClose={handleClose} setOpenAvatar={setOpenAvatar} setImage={setImage}/>
+           <SelectAvatar 
+              open={openAvatar} 
+              handleClose={handleCloseAvatar} 
+              setDefaultAvatar={setDefaultAvatar} 
+              setImage={setImage}
+            />
             <Box className={styles.form}>
               <SignUpForm handleGenderChange={handleGenderChange} />
               <Button variant="contained" color="secondary" sx={{ height: 50 }}>

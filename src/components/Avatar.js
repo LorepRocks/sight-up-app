@@ -4,7 +4,7 @@ import { Add } from "@mui/icons-material";
 
 import styles from "../styles/Avatar.module.css";
 
-const UserAvatar = ({ handleBadgeClick, defaultAvatar }) => {
+const UserAvatar = ({ handleBadgeClick, defaultAvatar, image }) => {
   return (
     <Stack>
       <Badge
@@ -17,9 +17,14 @@ const UserAvatar = ({ handleBadgeClick, defaultAvatar }) => {
           <Add sx={{ fontSize: 14, color: "#fff", borderRadius: 50 }} />
         }
       >
+        { image ? 
+         <Avatar className={styles.avatar} sx={{ width: 80, height: 80 }} src={image}/>
+        : (
         <Avatar className={styles.avatar} sx={{ width: 80, height: 80 }}>
           <ReactSVG id="avatar-img" src={defaultAvatar} />
         </Avatar>
+      )}
+        
       </Badge>
     </Stack>
   );
