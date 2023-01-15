@@ -1,14 +1,9 @@
-import { Button } from "@mui/material";
+import CTAButton from "./Button";
 const EmailBtn = ({ handleClick }) => {
   return (
-    <Button
-      sx={{ mb: 1, height: 50 }}
-      variant="outlined"
-      color="secondary"
-      onClick={handleClick}
-    >
+    <CTAButton variant="outlined" color="secondary" handleClick={handleClick}>
       Sign up with Email
-    </Button>
+    </CTAButton>
   );
 };
 

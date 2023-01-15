@@ -35,6 +35,7 @@ const SignUp = () => {
     <>
       <Logo />
       <section className={styles.mainSection}>
+        <Link to="/">Home</Link>
         <ReactSVG id="splash" src="/splash4.svg" />
         <section className={styles.formSection}>
           <Typography variant="subtitle1">Create new Account</Typography>
@@ -55,7 +56,6 @@ const SignUp = () => {
               <GoogleBtn handleClick={handleGoogleLogin} />
             </Box>
           </Box>
-          <Link to="/">Home</Link>
         </section>
       </section>
     </>

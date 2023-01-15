@@ -4,16 +4,12 @@ import PasswordInput from "../inputs/PasswordInput";
 
 import colors from "../../lib/colors";
 import styles from "../../styles/LoginForm.module.css";
+import EmailInput from "../inputs/Email";
 
 const LoginForm = () => {
   return (
     <>
-      <TextField
-        sx={{ height: 50, mb: 2 }}
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-      />
+      <EmailInput />
       <PasswordInput />
       <section className={styles.loginActions} sx={{ mb: 4 }}>
         <Link to="/forgot-password" className={styles.forgotBtn}>
