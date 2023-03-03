@@ -6,11 +6,34 @@ import styles from "../styles/ForgotPassword.module.css";
 import EmailInput from "./inputs/Email";
 import CTAButton from "./buttons/Button";
 import Logo from "./Logo";
+import { useState } from "react";
+import RequestCode from "./RequestCode";
+import VerifyCode from "./VerifyCode";
+import ResetPassword from "./ResetPassword";
 
 const ForgotPassword = () => {
+  const [state, setState] = useState("REQUEST");
+
   const handleGetCode = () => {
-    console.log("__Get code");
+    setState("CODE");
   };
+
+  const handleCancel = () => {
+    setState("FORGOT");
+  };
+
+  const onResendCode = () => {
+    console.log("__sending code again");
+  };
+
+  const handleVerifyCode = () => {
+    setState("RESET");
+  };
+
+  const handleChangePassword = () => {
+    console.log("password has been changed");
+  };
+
   return (
     <>
       <Logo />
@@ -22,19 +45,20 @@ const ForgotPassword = () => {
           <ReactSVG id="svgLogo" src="/splash.svg"></ReactSVG>
         </Box>
         <Box className={styles.resetContainer}>
-          <Typography variant="subtitle1">Reset Password</Typography>
-          <Typography className={styles.description} variant="subtitle2">
-            Do not remember your password? Relax! Enter the email associated
-            with your account and we will send a validation code to reset
-            password.
-          </Typography>
-          <EmailInput styles={{ m: 4, width: "50%" }} />
-          <CTAButton
-            styles={{ width: "25%", ml: 4 }}
-            handleClick={handleGetCode}
-          >
-            Get Code
-          </CTAButton>
+          {state === "REQUEST" && (
+            <RequestCode styles={styles} handle={handleGetCode} />
+          )}
+          {state === "CODE" && (
+            <VerifyCode
+              styles={styles}
+              handle={handleVerifyCode}
+              onCancel={handleCancel}
+              onResendCode={onResendCode}
+            />
+          )}
+          {state === "RESET" && (
+            <ResetPassword styles={styles} handle={handleChangePassword} />
+          )}
         </Box>
       </Box>
     </>

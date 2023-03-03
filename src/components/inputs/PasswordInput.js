@@ -10,13 +10,16 @@ import { VisibilityRounded, VisibilityOffRounded } from "@mui/icons-material";
 
 import colors from "../../lib/colors";
 
-const PasswordInput = () => {
+const defaultStyle = { mb: 1 };
+
+const PasswordInput = ({ styles }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
+  const stylesApplied = { ...defaultStyle, ...styles };
 
   const handleMouseDownPassword = (e) => {};
   return (
-    <FormControl variant="outlined" sx={{ mb: 1 }}>
+    <FormControl variant="outlined" sx={stylesApplied}>
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
         sx={{ height: 50 }}

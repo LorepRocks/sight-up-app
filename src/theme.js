@@ -19,6 +19,10 @@ const theme = createTheme({
       fontFamily: "QuicksandLight, sans-serif",
       fontSize: 16,
     },
+    subtitle3: {
+      fontFamily: "QuicksandLight, sans-serif",
+      fontSize: 12,
+    },
     body1: {
       fontFamily: "QuicksandLight, sans-serif",
       fontSize: 14,
@@ -36,9 +40,10 @@ const theme = createTheme({
           props: { variant: "link" },
           style: {
             textTransform: "none",
-            fontFamily: "QuicksandRegular, sans-serif",
-            fontSize: 14,
-            textDecoration: "underline",
+            fontFamily: "QuicksandLight, sans-serif",
+            fontSize: 12,
+            margin: 0,
+            padding: 0,
           },
         },
       ],
