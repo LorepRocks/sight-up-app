@@ -1,0 +1,8 @@
+.toastContainer {
+  font-family: QuicksandLight, sans-serif;
+  --toastify-color-error: #ee6365;
+}
+
+.body {
+  font-family: QuicksandRegular, sans-serif;
+}

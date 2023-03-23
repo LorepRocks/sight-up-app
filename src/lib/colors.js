@@ -7,6 +7,9 @@ const colors = {
     black: "#000",
     grey: "#455A64",
   },
+  toast: {
+    error: "#ee6365",
+  },
 };
 
 export default colors;

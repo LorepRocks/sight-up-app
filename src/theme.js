@@ -9,6 +9,9 @@ const theme = createTheme({
       main: "#EF9762",
       dark: "#B38A71",
     },
+    error: {
+      main: "#ee6365",
+    },
   },
   typography: {
     subtitle1: {
@@ -24,8 +27,8 @@ const theme = createTheme({
       fontSize: 12,
     },
     body1: {
-      fontFamily: "QuicksandLight, sans-serif",
-      fontSize: 14,
+      fontFamily: "QuicksandRegular, sans-serif",
+      fontSize: 15,
     },
     button: {
       fontFamily: "QuicksandBold, sans-serif",

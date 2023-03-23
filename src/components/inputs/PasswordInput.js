@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   FormControl,
   InputLabel,
@@ -7,6 +7,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { VisibilityRounded, VisibilityOffRounded } from "@mui/icons-material";
+import { LoginContext } from "../context/LoginContext";
 
 import colors from "../../lib/colors";
 
@@ -14,8 +15,8 @@ const defaultStyle = { mb: 1 };
 
 const PasswordInput = ({ styles }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
   const stylesApplied = { ...defaultStyle, ...styles };
+  const loginContext = useContext(LoginContext);
 
   const handleMouseDownPassword = (e) => {};
   return (
@@ -23,10 +24,11 @@ const PasswordInput = ({ styles }) => {
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
         sx={{ height: 50 }}
+        error={loginContext.error.password}
         id="outlined-adornment-password"
         type={showPassword ? "text" : "password"}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={loginContext.password}
+        onChange={(e) => loginContext.setPassword(e.target.value)}
         label="Password"
         endAdornment={
           <InputAdornment position="end">
