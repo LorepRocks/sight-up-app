@@ -7,7 +7,7 @@ errorsMap.set("auth/invalid-email", {
   origin: "email",
   desc: "Email is incorrect. Be sure you're using a valid email.",
 });
-errorsMap.set("auth/email-already-exists", {
+errorsMap.set("auth/email-already-in-use", {
   origin: "email",
   desc: "The email provided is already in use. Try with a different one.",
 });
@@ -17,9 +17,27 @@ errorsMap.set("general", {
 });
 
 export const validatePassword = (password) => {
-  const regex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-  if (!regex.test(password)) {
+  console.log(password);
+  const uppercaseRegExp = /(?=.*?[A-Z])/;
+  const lowercaseRegExp = /(?=.*?[a-z])/;
+  const digitsRegExp = /(?=.*?[0-9])/;
+  const specialCharRegExp = /(?=.*?[#?!@$%^&*-.])/;
+  const minLengthRegExp = /.{6,}/;
+  const passwordLength = password.length;
+  const uppercasePassword = uppercaseRegExp.test(password);
+  const lowercasePassword = lowercaseRegExp.test(password);
+  const digitsPassword = digitsRegExp.test(password);
+  const specialCharPassword = specialCharRegExp.test(password);
+  const minLengthPassword = minLengthRegExp.test(password);
+
+  if (
+    !passwordLength ||
+    !uppercasePassword ||
+    !lowercasePassword ||
+    !digitsPassword ||
+    !specialCharPassword ||
+    !minLengthPassword
+  ) {
     throw new Error("auth/invalid-password");
   }
   return true;
@@ -34,5 +52,6 @@ export const validateEmail = (email) => {
 };
 
 export const mappingErrorMessage = (error) => {
+  console.log(error);
   return errorsMap.get(error) || errorsMap.get("general");
 };

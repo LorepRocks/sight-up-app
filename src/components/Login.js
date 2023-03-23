@@ -8,7 +8,7 @@ import GoogleBtn from "./buttons/GoogleBtn";
 import styles from "../styles/Login.module.css";
 import toastStyles from "../styles/Toast.module.css";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import EmailBtn from "./buttons/EmailBtn";
 import LoginForm from "./forms/LoginForm";
 import { LoginContext } from "./context/LoginContext";
