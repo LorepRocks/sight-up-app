@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 2rem 3rem;
+  position: relative;
+}
+
+.logout {
+  position: fixed;
+  top: 4rem;
+  right: 3rem;
+}

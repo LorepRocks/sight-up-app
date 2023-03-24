@@ -9,13 +9,16 @@ import EmailInput from "../inputs/Email";
 const LoginForm = () => {
   return (
     <>
-      <EmailInput />
-      <PasswordInput />
+      <EmailInput origin="login" />
+      <PasswordInput origin="login" />
       <section className={styles.loginActions} sx={{ mb: 4 }}>
         <Link to="/forgot-password" className={styles.forgotBtn}>
           Forgot password?
         </Link>
-        <Typography variant="body1" sx={{ color: colors.common.grey }}>
+        <Typography
+          variant="body1"
+          sx={{ color: colors.common.grey, fontWeight: "bold", fontSize: 13 }}
+        >
           Not registered?
           <Link to="/sign-up" className={styles.textBtn}>
             Sign up

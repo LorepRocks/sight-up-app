@@ -1,44 +1,57 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import { Divider, Typography } from "@mui/material";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { createContext, useState } from "react";
+import { toast } from "react-toastify";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 import Logo from "./Logo";
+import Toast from "./Toast";
 import GoogleBtn from "./buttons/GoogleBtn";
 import styles from "../styles/Login.module.css";
-import toastStyles from "../styles/Toast.module.css";
 
-import { toast } from "react-toastify";
 import EmailBtn from "./buttons/EmailBtn";
 import LoginForm from "./forms/LoginForm";
-import { LoginContext } from "./context/LoginContext";
+import { LoginContext } from "../context";
 import { auth } from "../firebase/admin";
 import {
   validateEmail,
   validatePassword,
   mappingErrorMessage,
 } from "../lib/utils";
-import Toast from "./Toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ email: false, password: false });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      console.log("Auth changed", user);
+      if (user) {
+        navigate("/home");
+      } else {
+        navigate("/");
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth]);
+
   const handleSignUpEmail = async () => {
     try {
-      if (validatePassword(password) && validateEmail(email)) {
-        setError({
-          password: false,
-          email: false,
-        });
-        const userCredentials = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        console.log("___credentials", userCredentials);
-      }
+      const userSignIn = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(userSignIn);
     } catch (err) {
+      console.log(err.code);
       const error = err.code ? err.code : err.message;
       const { desc, origin } = mappingErrorMessage(error);
       if (origin === "email") {
@@ -53,7 +66,7 @@ const Login = () => {
           email: false,
         });
       }
-      console.log(desc);
+
       toast.error(desc);
     }
   };

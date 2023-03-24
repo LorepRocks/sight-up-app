@@ -3,18 +3,14 @@ import { TextField } from "@mui/material";
 import PasswordInput from "../inputs/PasswordInput";
 import GenderRadio from "../inputs/GenderRadio";
 import EmailInput from "../inputs/Email";
+import TextInput from "../inputs/TextInput";
 
 const SignUpForm = ({ handleGenderChange }) => {
   return (
     <>
-      <TextField
-        sx={{ height: 50, mb: 2 }}
-        id="outlined-basic"
-        label="Name & Lastname"
-        variant="outlined"
-      />
-      <EmailInput />
-      <PasswordInput />
+      <TextInput label="Name & Lastname" origin="signUp" />
+      <EmailInput origin="signUp" />
+      <PasswordInput origin="signUp" />
       <GenderRadio handleChange={handleGenderChange} />
     </>
   );

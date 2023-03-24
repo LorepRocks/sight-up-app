@@ -1,3 +1,4 @@
+import { LoginContext, SignUpContext } from "../context";
 export const errorsMap = new Map();
 errorsMap.set("auth/invalid-password", {
   origin: "password",
@@ -11,13 +12,24 @@ errorsMap.set("auth/email-already-in-use", {
   origin: "email",
   desc: "The email provided is already in use. Try with a different one.",
 });
+errorsMap.set("auth/user-not-found", {
+  origin: "email",
+  desc: "The email entered is not registered.",
+});
+errorsMap.set("auth/wrong-password", {
+  origin: "password",
+  desc: "The password is incorrect.",
+});
 errorsMap.set("general", {
   origin: "general",
   desc: "Oops! there was an error.",
 });
 
+const contextMap = new Map();
+contextMap.set("login", LoginContext);
+contextMap.set("signUp", SignUpContext);
+
 export const validatePassword = (password) => {
-  console.log(password);
   const uppercaseRegExp = /(?=.*?[A-Z])/;
   const lowercaseRegExp = /(?=.*?[a-z])/;
   const digitsRegExp = /(?=.*?[0-9])/;
@@ -52,6 +64,9 @@ export const validateEmail = (email) => {
 };
 
 export const mappingErrorMessage = (error) => {
-  console.log(error);
   return errorsMap.get(error) || errorsMap.get("general");
+};
+
+export const getContextFromOrigin = (origin) => {
+  return contextMap.get(origin);
 };

@@ -7,16 +7,16 @@ import {
   IconButton,
 } from "@mui/material";
 import { VisibilityRounded, VisibilityOffRounded } from "@mui/icons-material";
-import { LoginContext } from "../context/LoginContext";
 
 import colors from "../../lib/colors";
+import { getContextFromOrigin } from "../../lib/utils";
 
 const defaultStyle = { mb: 1 };
 
-const PasswordInput = ({ styles }) => {
+const PasswordInput = ({ styles, origin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const stylesApplied = { ...defaultStyle, ...styles };
-  const loginContext = useContext(LoginContext);
+  const context = useContext(getContextFromOrigin(origin));
 
   const handleMouseDownPassword = (e) => {};
   return (
@@ -24,11 +24,11 @@ const PasswordInput = ({ styles }) => {
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
         sx={{ height: 50 }}
-        error={loginContext.error.password}
+        error={context.error.password}
         id="outlined-adornment-password"
         type={showPassword ? "text" : "password"}
-        value={loginContext.password}
-        onChange={(e) => loginContext.setPassword(e.target.value)}
+        value={context.password}
+        onChange={(e) => context.setPassword(e.target.value)}
         label="Password"
         endAdornment={
           <InputAdornment position="end">

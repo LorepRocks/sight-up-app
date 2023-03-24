@@ -3,22 +3,19 @@ import { useContext } from "react";
 import { getContextFromOrigin } from "../../lib/utils";
 
 const defaultStyle = { height: 50, mb: 2 };
-const EmailInput = ({ styles, origin }) => {
+const TextInput = ({ styles, label, origin }) => {
   const context = useContext(getContextFromOrigin(origin));
-  //const loginContext = useContext(LoginContext);
-
   const stylesApplied = { ...defaultStyle, ...styles };
-
   return (
     <TextField
-      error={context.error.email}
-      value={context.email}
+      value={context.name}
       sx={stylesApplied}
-      label="Email"
+      id="outlined-basic"
+      label={label}
       variant="outlined"
-      onChange={(e) => context.setEmail(e.target.value)}
+      onChange={(e) => context.setName(e.target.value)}
     />
   );
 };
 
-export default EmailInput;
+export default TextInput;
