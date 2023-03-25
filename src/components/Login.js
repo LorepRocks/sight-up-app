@@ -4,9 +4,10 @@ import { ReactSVG } from "react-svg";
 import { Divider, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 import Logo from "./Logo";
@@ -18,13 +19,10 @@ import EmailBtn from "./buttons/EmailBtn";
 import LoginForm from "./forms/LoginForm";
 import { LoginContext } from "../context";
 import { auth } from "../firebase/admin";
-import {
-  validateEmail,
-  validatePassword,
-  mappingErrorMessage,
-} from "../lib/utils";
+import { mappingErrorMessage } from "../lib/utils";
 
 const Login = () => {
+  const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ email: false, password: false });
@@ -70,7 +68,11 @@ const Login = () => {
       toast.error(desc);
     }
   };
-  const handleSignUpGoogle = () => {};
+  const handleSignUpGoogle = async () => {
+    console.log("___google");
+    const credentials = await signInWithPopup(auth, provider);
+    console.log("google", credentials);
+  };
 
   return (
     <LoginContext.Provider
